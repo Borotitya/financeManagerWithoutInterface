@@ -7,16 +7,16 @@
 
 using namespace std;
 
-class FinanceTracker {
-private:
-	double income;
-	vector<pair<wstring, double>> transactions;
-	vector<pair<wstring, double>> categories;
+class FinanceTracker { // Класс для учета доходов
+private: // поля
+	double income; // доход в месяц
+	vector<pair<wstring, double>> transactions; //  список транзакции (категория, сумма) 
+	vector<wstring> categories; // список категорий (категория, сумма)
 public:
-	FinanceTracker() : income(0) {}
+	FinanceTracker() : income(0) {} // конструктор по умолчанию (доход = 0)
 
-	void setIncome(double newIncome) {
-		income = newIncome;
+	void setIncome(double newIncome) { // метод для установки дохода
+		income = newIncome; //	устанавливаем новый доход
 	}
 	void addTransaction(const wstring& category, double amount) {
 		if ((category == L"Общие " || category == L"Одиночные") && amount > income) {
@@ -45,7 +45,7 @@ public:
 	void addCategory(const wstring& category) {
 		categories.push_back(category);
 	}
-	vector<wstring> getCategories() const {
+	vector <wstring> getCategories() const {
 		return categories;
 	}
 	void showNotification(const std::wstring& message) const {
